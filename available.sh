@@ -41,7 +41,7 @@ while read line; do
     HOST=$(echo $line | cut -d ':' -f1)
     PORT=$(echo $line | cut -d ':' -f2)
     nc -w $TIMEOUT -zv $HOST $PORT 1>>/dev/null 2>>/dev/null
-    if [ $? != 0 ]; then
+    if [ $? = 0 ]; then
         echo $line
         if $ANY ; then
             exit 0
